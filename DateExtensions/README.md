@@ -44,7 +44,7 @@ Choose one:
 - Manual copy (recommended for small utilities)
   - Copy the files in DateExtensions into your project.
 - Swift Package Manager
-  - If you publish these files in a package, add the repo URL to your project and include the target where these files live.
+  - Not yet available.
 
 No third-party dependencies required.
 

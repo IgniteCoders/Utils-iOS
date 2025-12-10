@@ -15,7 +15,6 @@ Lightweight, dependency-free convenience methods for safely loading remote image
 * **Race-condition safe** via URL tracking
 * **Zero external dependencies** — pure Swift + UIKit
 
----
 
 ## Included File
 
@@ -23,7 +22,6 @@ Lightweight, dependency-free convenience methods for safely loading remote image
 
 Provides a small, robust API for asynchronously loading images into a `UIImageView` with caching and reuse protection.
 
----
 
 ## API
 
@@ -52,7 +50,6 @@ extension UIImageView {
 }
 ```
 
----
 
 ## Usage
 
@@ -98,7 +95,6 @@ func configure(with item: Item) {
 }
 ```
 
----
 
 ## Notes & Behavior
 
@@ -121,7 +117,6 @@ func configure(with item: Item) {
   * Adjust `NSCache` limits (`countLimit`, `totalCostLimit`).
   * Customize the `URLRequest` (cache policy, timeout) if needed.
 
----
 
 ## FAQ
 
