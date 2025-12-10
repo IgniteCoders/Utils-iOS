@@ -29,6 +29,11 @@
 			path = "Utils-iOS";
 			sourceTree = "<group>";
 		};
+		6CAA07B02EE98BF60054E37F /* DateExtensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DateExtensions;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +50,7 @@
 		6CAA076C2EE96AF30054E37F = {
 			isa = PBXGroup;
 			children = (
+				6CAA07B02EE98BF60054E37F /* DateExtensions */,
 				6CAA07772EE96AF30054E37F /* Utils-iOS */,
 				6CAA07762EE96AF30054E37F /* Products */,
 			);
@@ -75,6 +81,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				6CAA07772EE96AF30054E37F /* Utils-iOS */,
+				6CAA07B02EE98BF60054E37F /* DateExtensions */,
 			);
 			name = "Utils-iOS";
 			packageProductDependencies = (
