@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6C53769D2EEACA6B00D43C53 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6C53769C2EEACA6B00D43C53 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		6C53769C2EEACA6B00D43C53 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6CAA07752EE96AF30054E37F /* Utils-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Utils-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -15,6 +20,20 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+			);
+			target = 6CAA07742EE96AF30054E37F /* Utils-iOS */;
+		};
+		6CAA07D02EE98D550054E37F /* Exceptions for "StringExtensions" folder in "Utils-iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				StringExtensions.swift,
+			);
+			target = 6CAA07742EE96AF30054E37F /* Utils-iOS */;
+		};
+		6CAA07D12EE98D550054E37F /* Exceptions for "UIViewExtensions" folder in "Utils-iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"UIView+Styling.swift",
 			);
 			target = 6CAA07742EE96AF30054E37F /* Utils-iOS */;
 		};
@@ -34,6 +53,27 @@
 			path = DateExtensions;
 			sourceTree = "<group>";
 		};
+		6CAA07C82EE98D550054E37F /* StringExtensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6CAA07D02EE98D550054E37F /* Exceptions for "StringExtensions" folder in "Utils-iOS" target */,
+			);
+			path = StringExtensions;
+			sourceTree = "<group>";
+		};
+		6CAA07CA2EE98D550054E37F /* UIImageViewExtensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UIImageViewExtensions;
+			sourceTree = "<group>";
+		};
+		6CAA07CC2EE98D550054E37F /* UIViewExtensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6CAA07D12EE98D550054E37F /* Exceptions for "UIViewExtensions" folder in "Utils-iOS" target */,
+			);
+			path = UIViewExtensions;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +90,10 @@
 		6CAA076C2EE96AF30054E37F = {
 			isa = PBXGroup;
 			children = (
+				6C53769C2EEACA6B00D43C53 /* README.md */,
+				6CAA07C82EE98D550054E37F /* StringExtensions */,
+				6CAA07CA2EE98D550054E37F /* UIImageViewExtensions */,
+				6CAA07CC2EE98D550054E37F /* UIViewExtensions */,
 				6CAA07B02EE98BF60054E37F /* DateExtensions */,
 				6CAA07772EE96AF30054E37F /* Utils-iOS */,
 				6CAA07762EE96AF30054E37F /* Products */,
@@ -82,6 +126,7 @@
 			fileSystemSynchronizedGroups = (
 				6CAA07772EE96AF30054E37F /* Utils-iOS */,
 				6CAA07B02EE98BF60054E37F /* DateExtensions */,
+				6CAA07CA2EE98D550054E37F /* UIImageViewExtensions */,
 			);
 			name = "Utils-iOS";
 			packageProductDependencies = (
@@ -129,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C53769D2EEACA6B00D43C53 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

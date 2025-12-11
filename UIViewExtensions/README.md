@@ -1,94 +1,47 @@
 # UIViewExtensions
 
-A lightweight set of `UIView` extensions for iOS that simplify common UI styling tasks such as rounding corners, making views circular, adding borders, and applying drop shadows.
+Styling helpers for `UIView` that make rounding corners, adding borders, and applying shadows concise and chainable.
 
-These helpers are designed to be chainable and intuitive, letting you write cleaner UI code.
+## What’s included
+- `UIView+Styling.swift` — helpers to round corners, make circular views, set borders, and apply configurable shadows.
 
+## Highlights
+- Chainable API for concise styling code.
+- Circle helper uses the smallest dimension for perfect circles (call after layout).
+- Shadow helper sets `masksToBounds = false` and accepts color, opacity, blur radius, and offset.
+- Border helper configures width and color in one call.
 
-## Features
-
-* Round corners with any radius
-* Automatically make a view perfectly circular
-* Add borders with configurable width and color
-* Apply drop shadows with custom color, opacity, blur, and offset
-* Chainable, expressive API
-* Safe usage notes included (e.g., rounded corners + shadows)
+## Requirements
+- Platforms: iOS 13+.
+- Swift: 5.7+
 
 ## Installation
-
-- Manual copy (recommended for small utilities)
-  - Copy the files in UIViewExtensions into your project.
-- Swift Package Manager
-  - Not yet available.
+- Manual: copy `UIView+Styling.swift` into your target.
+- Swift Package Manager: not yet published; manual copy recommended for now.
 
 ## Usage
-
-### Round all corners
-
 ```swift
-myView.roundCorners(radius: 12)
-```
+import UIKit
 
-### Make a perfectly circular view
+// Round all corners
+cardView.roundCorners(radius: 12)
 
-```swift
+// Make a circle (after layout)
 avatarImageView.roundAsCircle()
-```
 
-### Add a border
+// Add a border
+badgeView.setBorder(width: 2, color: .systemBlue)
 
-```swift
-myView.setBorder(width: 2, color: .systemBlue)
-```
-
-### Add a shadow
-
-```swift
+// Add a shadow
 cardView.setShadow(
-    color: UIColor.black,
+    color: .black,
     opacity: 0.25,
     radius: 6,
     offset: CGSize(width: 0, height: 3)
 )
 ```
 
-## Notes & Best Practices
-
-### Rounded corners + shadow on the same view
-
-iOS requires:
-
-* Rounded corners → `masksToBounds = true`
-* Shadow → `masksToBounds = false`
-
-These conflict.
-To get both rounded corners **and** a shadow, wrap your content view inside a container:
-
-```swift
-shadowContainer.addSubview(contentView)
-
-contentView.roundCorners(radius: 12) // inner view
-shadowContainer.roundCorners(radius: 12).setShadow() // outer view
-```
-
-## Extension Reference
-
-### `roundCorners(radius:)`
-
-Rounds all corners of the view.
-Sets `masksToBounds = true`.
-
-### `roundAsCircle()`
-
-Makes the view circular using its smallest dimension.
-Call after layout.
-
-### `setBorder(width:color:)`
-
-Adds a border to the view.
-
-### `setShadow(color:opacity:radius:offset:)`
-
-Applies a drop shadow.
-Sets `masksToBounds = false`.
+## Notes
+- Rounded corners + shadow: wrap content in a container; apply `roundCorners` to the inner view and `setShadow` to the outer container so `masksToBounds` requirements don’t conflict.
+- `roundAsCircle()` should be called after layout so the view has its final size.
 

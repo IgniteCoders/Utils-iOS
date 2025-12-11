@@ -1,132 +1,56 @@
 # UIImageViewExtensions
 
-Lightweight, dependency-free convenience methods for safely loading remote images into `UIImageView`.
+Convenience methods for `UIImageView` that load remote images with caching, safe reuse, and main-thread completion—no external dependencies.
 
-## Features
+## What’s included
+- `UIImageView+ImageLoading.swift` — async image loading from `URL`/`String`, in-memory caching via `NSCache`, placeholder support, cancellation, and main-thread completion callbacks.
 
-* **Remote image loading via `URLSession`**
-  Uses system HTTP caching, redirects, and timeouts.
-* **In-memory image caching (`NSCache`)**
-  Prevents unnecessary repeated downloads.
-* **Immediate placeholder support**
-* **Completion handler** (always on the main thread)
-* **Automatic cancellation** of in-flight requests
-  Ideal for reusable table/collection-view cells.
-* **Race-condition safe** via URL tracking
-* **Zero external dependencies** — pure Swift + UIKit
+## Highlights
+- Uses `URLSession` + system `URLCache` for HTTP caching/redirects/timeouts.
+- In-memory `NSCache` prevents repeated downloads of decoded images.
+- Placeholder applied immediately while the request is in flight.
+- Safe for reusable cells: starting a new request cancels the previous one.
+- Completion handler always invoked on the main thread.
 
+## Requirements
+- Platforms: iOS 13+.
+- Swift: 5.7+
 
-## Included File
-
-### `UIImageView+ImageLoading.swift`
-
-Provides a small, robust API for asynchronously loading images into a `UIImageView` with caching and reuse protection.
-
-
-## API
-
-```swift
-extension UIImageView {
-    // MARK: - URL String Variants
-    func setImage(from urlString: String)
-    func setImage(from urlString: String, placeholder: UIImage?)
-    func setImage(
-        from urlString: String,
-        placeholder: UIImage?,
-        completion: ((Result<UIImage, Error>) -> Void)?
-    )
-
-    // MARK: - URL Variants
-    func setImage(from url: URL)
-    func setImage(from url: URL, placeholder: UIImage?)
-    func setImage(
-        from url: URL,
-        placeholder: UIImage?,
-        completion: ((Result<UIImage, Error>) -> Void)?
-    )
-
-    // MARK: - Cancellation
-    func cancelImageLoad()
-}
-```
-
+## Installation
+- Manual: copy `UIImageView+ImageLoading.swift` into your target.
+- Swift Package Manager: not yet published; manual copy recommended for now.
 
 ## Usage
-
-### Load from a URL string
-
 ```swift
+import UIKit
+
+// Basic load
 imageView.setImage(from: "https://example.com/image.jpg")
-```
 
-### Load with placeholder
-
-```swift
+// With placeholder
 imageView.setImage(
-    from: url,
+    from: URL(string: "https://example.com/image.jpg")!,
     placeholder: UIImage(named: "placeholder")
 )
-```
 
-### Load with completion handler
-
-```swift
+// With completion
 imageView.setImage(from: url) { result in
     switch result {
-    case .success(let image):
-        print("Loaded image size:", image.size)
-    case .failure(let error):
-        print("Failed to load image:", error)
+    case .success(let image): print("Loaded:", image.size)
+    case .failure(let error): print("Failed:", error)
     }
 }
-```
 
-### Use in reusable cells
-
-```swift
+// In reusable cells
 override func prepareForReuse() {
     super.prepareForReuse()
     thumbnailImageView.cancelImageLoad()
-    thumbnailImageView.image = nil // optional: clear old image
-}
-
-func configure(with item: Item) {
-    thumbnailImageView.setImage(from: item.thumbnailURL)
+    thumbnailImageView.image = nil
 }
 ```
 
-
-## Notes & Behavior
-
-* **Threading:**
-  Networking occurs off the main thread; UI updates happen on the main thread.
-
-* **Caching:**
-  An in-memory `NSCache` stores decoded `UIImage` objects.
-  Cached images are applied immediately.
-
-* **Cancellation:**
-  Starting a new request cancels the previous request for that image view.
-  Calling `cancelImageLoad()` manually is recommended in reused cells.
-
-* **Error Handling:**
-  Completion returns `.failure` for network errors or invalid image data.
-
-* **Customization:**
-
-  * Adjust `NSCache` limits (`countLimit`, `totalCostLimit`).
-  * Customize the `URLRequest` (cache policy, timeout) if needed.
-
-
-## FAQ
-
-### Does this support disk caching?
-
-Yes, via `URLSession` + `URLCache` (system-managed HTTP disk caching).
-This extension adds an **in-memory cache** for decoded `UIImage` objects.
-For custom disk caching, configure your own `URLCache` at the app level.
-
-### Is there an async/await version?
-
-Not currently included, but the API can easily support an async variant for iOS 15+ without breaking existing calls.
+## Notes
+- Threading: networking off the main thread; image application on the main thread.
+- Cancellation: starting a new load on the same view cancels the previous task.
+- Caching: relies on `NSCache`; adjust limits or `URLRequest` configuration if needed.
 
