@@ -40,6 +40,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		6C5376A42EEADF5400D43C53 /* UIViewControllerExtensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = UIViewControllerExtensions;
+			sourceTree = "<group>";
+		};
 		6CAA07772EE96AF30054E37F /* Utils-iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -92,6 +97,7 @@
 			children = (
 				6C53769C2EEACA6B00D43C53 /* README.md */,
 				6CAA07C82EE98D550054E37F /* StringExtensions */,
+				6C5376A42EEADF5400D43C53 /* UIViewControllerExtensions */,
 				6CAA07CA2EE98D550054E37F /* UIImageViewExtensions */,
 				6CAA07CC2EE98D550054E37F /* UIViewExtensions */,
 				6CAA07B02EE98BF60054E37F /* DateExtensions */,
@@ -124,6 +130,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				6C5376A42EEADF5400D43C53 /* UIViewControllerExtensions */,
 				6CAA07772EE96AF30054E37F /* Utils-iOS */,
 				6CAA07B02EE98BF60054E37F /* DateExtensions */,
 				6CAA07CA2EE98D550054E37F /* UIImageViewExtensions */,

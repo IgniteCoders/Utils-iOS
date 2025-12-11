@@ -12,6 +12,7 @@ Lightweight Swift utilities and UIKit extensions for common iOS needs: date hand
 - [`UIImageViewExtensions/`](UIImageViewExtensions) — async image loading into `UIImageView` with `NSCache`, placeholder support, cancellation for reusable cells, main-thread completion.
 - [`UIViewExtensions/`](UIViewExtensions) — chainable styling helpers to round corners, make circles, set borders, and apply configurable shadows.
 - [`StringExtensions/`](StringExtensions) — text sizing helper to compute bounding size given a font and width for manual layout or dynamic cells.
+- [`UIViewControllerExtensions/`](UIViewControllerExtensions) — keyboard notification helpers with overridable show/hide hooks to adjust constraints (e.g., bottom constraints following the keyboard).
 
 ## Installation
 - Manual: copy the Swift files from the module folders you need into your target.
